@@ -96,3 +96,6 @@ __pycache__/
 # 依赖项和打包
 *.zip
 *.jar
+
+# 忽略对话记录文件
+cursor_.md
