@@ -1,0 +1,45 @@
+{
+  "window": {
+    "width": 1000,
+    "height": 900,
+    "x": 100,
+    "y": 100,
+    "maximized": false
+  },
+  "ui": {
+    "theme": "modern",
+    "font_size": 12,
+    "auto_refresh": true,
+    "refresh_interval": 30,
+    "show_tray_icon": true,
+    "minimize_to_tray": true
+  },
+  "paths": {
+    "data_directory": "",
+    "screenshot_directory": "screen_recordings",
+    "database_directory": "chroma_db_activity"
+  },
+  "api": {
+    "siliconflow_key": "sk-bzikntgsrfvdxezhgcsmfvyreewkxxwilppmzcjwzhxyhdbi",
+    "default_model": "Qwen/Qwen2.5-VL-72B-Instruct",
+    "api_url": "https://api.siliconflow.cn/v1/chat/completions",
+    "temperature": 0.7,
+    "max_tokens": 2000
+  },
+  "data": {
+    "max_records_display": 100,
+    "auto_load_on_startup": true,
+    "data_retention_days": 30
+  },
+  "capture": {
+    "auto_start": true,
+    "capture_interval": 60,
+    "enable_ocr": true,
+    "enable_url_detection": true
+  },
+  "notifications": {
+    "enable_notifications": true,
+    "show_startup_message": true,
+    "show_error_notifications": true
+  }
+}

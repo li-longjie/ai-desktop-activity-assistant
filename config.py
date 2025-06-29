@@ -5,6 +5,10 @@
 import os
 from typing import Dict, Any
 import logging
+from dotenv import load_dotenv
+
+# 在文件顶部加载 .env 文件
+load_dotenv()
 
 # 视频源配置
 class VideoConfig:
@@ -30,16 +34,27 @@ VIDEO_SOURCE = VideoConfig.CAMERA_INDEX  # 使用摄像头索引
 
 # API配置
 class APIConfig:
-    # --- Chutes.ai 配置 ---
+    # --- SiliconFlow 配置 (当前启用) ---
     # Qwen (Multi-modal)
-    QWEN_API_KEY = os.getenv("CHUTES_API_KEY", "your_chutes_api_key_here")  # Chutes API密钥
-    QWEN_API_URL = "https://llm.chutes.ai/v1/chat/completions" # Chutes.ai endpoint
-    QWEN_MODEL = "Qwen/Qwen2.5-VL-32B-Instruct" # Chutes.ai Qwen model name
+    QWEN_API_KEY = "sk-bzikntgsrfvdxezhgcsmfvyreewkxxwilppmzcjwzhxyhdbi"
+    QWEN_API_URL = "https://api.siliconflow.cn/v1/chat/completions"
+    QWEN_MODEL = "Qwen/Qwen2.5-VL-72B-Instruct"
 
     # DeepSeek (Text Generation / Analysis)
-    DEEPSEEK_API_KEY = os.getenv("CHUTES_API_KEY", "your_chutes_api_key_here")  # Chutes API密钥
-    DEEPSEEK_API_URL = "https://llm.chutes.ai/v1/chat/completions" # Chutes.ai endpoint
-    DEEPSEEK_MODEL = "deepseek-ai/DeepSeek-V3-0324" # Chutes.ai DeepSeek model name
+    DEEPSEEK_API_KEY = "sk-bzikntgsrfvdxezhgcsmfvyreewkxxwilppmzcjwzhxyhdbi"
+    DEEPSEEK_API_URL = "https://api.siliconflow.cn/v1/chat/completions"
+    DEEPSEEK_MODEL = "deepseek-ai/DeepSeek-V3"
+
+    # --- Chutes.ai 配置 (已注释) ---
+    # Qwen (Multi-modal)
+    # QWEN_API_KEY = os.getenv("CHUTES_API_KEY")
+    # QWEN_API_URL = "https://llm.chutes.ai/v1/chat/completions" # Chutes.ai endpoint
+    # QWEN_MODEL = "Qwen/Qwen2.5-VL-32B-Instruct" # Chutes.ai Qwen model name
+
+    # DeepSeek (Text Generation / Analysis)
+    # DEEPSEEK_API_KEY = os.getenv("CHUTES_API_KEY")
+    # DEEPSEEK_API_URL = "https://llm.chutes.ai/v1/chat/completions" # Chutes.ai endpoint
+    # DEEPSEEK_MODEL = "deepseek-ai/DeepSeek-V3-0324" # Chutes.ai DeepSeek model name
 
     # --- OpenRouter 配置 (已注释) ---
     # Qwen (Multi-modal)
@@ -52,15 +67,11 @@ class APIConfig:
     # DEEPSEEK_API_URL = "https://openrouter.ai/api/v1/chat/completions"
     # DEEPSEEK_MODEL = "deepseek/deepseek-chat-v3-0324:free"
 
-    # --- 原始通义千问和 SiliconFlow 配置 (已注释) ---
+    # --- 原始通义千问配置 (已注释) ---
     # Qwen (Original Direct API)
     # QWEN_API_KEY = "sk-a3c32f83f1cd411b8f226c95d90c6c9e"
     # QWEN_API_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions"
     # QWEN_MODEL = "qwen2.5-vl-3b-instruct"
-    # DeepSeek (Original SiliconFlow API)
-    # DEEPSEEK_API_KEY = "sf-ov7mJF26xj1OXomexsrP8ZkDqAMRt9Hfb"
-    # DEEPSEEK_API_URL = "https://api.siliconflow.cn/v1/chat/completions"
-    # DEEPSEEK_MODEL = "deepseek-ai/DeepSeek-V3"
 
     # API请求通用配置
     REQUEST_TIMEOUT = 60.0  # 请求超时时间（秒）
@@ -99,8 +110,8 @@ LOG_CONFIG = {
 # 阿里云OSS配置
 class OSSConfig:
     ENABLED = True  # 强制启用OSS，不使用回退
-    ACCESS_KEY_ID = os.getenv('OSS_ACCESS_KEY_ID', 'your_oss_access_key_id_here')
-    ACCESS_KEY_SECRET = os.getenv('OSS_ACCESS_KEY_SECRET', 'your_oss_access_key_secret_here')
+    ACCESS_KEY_ID = os.getenv('OSS_ACCESS_KEY_ID')
+    ACCESS_KEY_SECRET = os.getenv('OSS_ACCESS_KEY_SECRET')
     ENDPOINT = 'oss-cn-beijing.aliyuncs.com'
     BUCKET = 'jasonli01'
     # 用于存储的路径前缀
